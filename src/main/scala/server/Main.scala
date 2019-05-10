@@ -7,10 +7,10 @@ object Main extends App {
   val server = new ServerSocket(PORT)
   println("HTTP Server Start! Listening at " + PORT + "!")
   while (true) {
+    println("きた")
     val socket = server.accept
-    val serverThread = new ServerThread(socket)
-    val thread = new Thread(serverThread)
-    thread.start()
+    new Thread(new ServerThread(socket)).start()
+//    thread.start()
   }
 
 }

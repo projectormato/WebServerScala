@@ -5,13 +5,13 @@ import java.io._
 import java.nio.file._
 import scala.util.control.Breaks
 
-class ServerThread(socket: Socket) extends Runnable {
+class ServerThread(threadSocket: Socket) extends Runnable {
   private val DOCUMENT_ROOT = "/home/keita/IdeaProjects/WebServerScala/src/HTML"
   private val ERROR_DOCUMENT = "/home/keita/IdeaProjects/WebServerScala/src/HTML"
   private val SERVER_NAME = "localhost:8000"
-  private val mySocket = socket
+  private val socket = threadSocket
 
-  override def run(): Unit = {
+  def run(): Unit = {
     var output: OutputStream = null
     val b = new Breaks
 
@@ -73,6 +73,17 @@ class ServerThread(socket: Socket) extends Runnable {
             SendResponse.sendNotFoundResponse(output, ERROR_DOCUMENT)
       }
 
+    } catch {
+      case e: Exception => e.printStackTrace()
+    } finally {
+      try {
+        if (output != null) {
+          output.close()
+        }
+        socket.close();
+      } catch {
+        case e: Exception => e.printStackTrace()
+      }
     }
 
   }
