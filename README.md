@@ -1,2 +1,4 @@
 # WebServerScala
-Scala実装です。Tomcatモドキとかは作らずに、Webサーバの方だけ作っていきます。
+Scala実装です。Tomcatモドキとかは作らずに、Webサーバの方だけ作りました。
+
+Java版をそのまま移植した感じで、全くScalaっぽくないのでリファクタリングしていきます。
