@@ -6,9 +6,9 @@ import java.nio.file._
 import scala.util.control.Breaks
 
 class ServerThread(threadSocket: Socket) extends Runnable {
-  private val DOCUMENT_ROOT = "/home/keita/IdeaProjects/WebServerScala/src/HTML"
-  private val ERROR_DOCUMENT = "/home/keita/IdeaProjects/WebServerScala/src/HTML"
-  private val SERVER_NAME = "localhost:8000"
+  private val DOCUMENT_ROOT = "/home/keita/IdeaProjects/WebServerScala/src/static"
+  private val ERROR_DOCUMENT = "/home/keita/IdeaProjects/WebServerScala/src/static"
+  private val SERVER_NAME = "localhost:7000"
   private val socket = threadSocket
 
   def run(): Unit = {
@@ -31,7 +31,7 @@ class ServerThread(threadSocket: Socket) extends Runnable {
           } else if (line.startsWith("Host:")) {
             host = line.substring("Host: ".length())
           }
-
+          line = Util.readLine(input)
         }
       )
 

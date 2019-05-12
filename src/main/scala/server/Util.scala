@@ -17,8 +17,7 @@ object Util {
     ch = input.read
     b.breakable {
       while (true) {
-        ch = input.read
-        if (ch != -1) {
+        if (ch == -1) {
           b.break
         }
         if (ch == '\r') {
@@ -27,6 +26,7 @@ object Util {
         } else {
           ret += ch.asInstanceOf[Char]
         }
+        ch = input.read
       }
     }
     if (ch == -1) {

@@ -35,6 +35,7 @@ object MyURLDecoder {
       } else {
         destBytes(destIdx) = srcBytes(srcIdx)
       }
+      srcIdx += 1
       destIdx += 1
     }
     val destBytes2 = java.util.Arrays.copyOf(destBytes, destIdx)
